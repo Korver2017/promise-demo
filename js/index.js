@@ -1,5 +1,6 @@
 let first = document.querySelector('.first');
 let second = document.querySelector('.second');
+let timer = document.querySelector('.timer');
 
 function callApi() {
   return new Promise((resolve, reject) => {
@@ -23,6 +24,7 @@ function callApi() {
 }
 callApi().then(setTimeout(() => {
   console.log('Time Up!');
+  timer.innerText = '2s Time Up!';
   fetch('https://randomuser.me/api/', {})
     .then((response) => {
       console.log(response);
