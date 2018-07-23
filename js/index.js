@@ -2,6 +2,10 @@ let first = document.querySelector('.first');
 let second = document.querySelector('.second');
 let timer = document.querySelector('.timer');
 let image = document.querySelector('img');
+let taskOneList = document.querySelector('.taskOne');
+let taskTwoList = document.querySelector('.taskTwo');
+let taskThreeList = document.querySelector('.taskThree');
+let taskFourList = document.querySelector('.taskFour');
 
 function callApi() {
   return new Promise((resolve, reject) => {
@@ -61,14 +65,14 @@ callApi().then(
 function taskOne() {
   return new Promise((resolve, reject) => {
     setTimeout(function() {
-      resolve('RESOLVE ONE');
+      resolve('Resolve One');
     }, 1000);
   });
 }
 function taskTwo() {
   return new Promise((resolve, reject) => {
     setTimeout(function() {
-      resolve('RESOLVE TWO');
+      resolve('Resolve Two');
     }, 1000);
   });
 }
@@ -76,7 +80,14 @@ function taskThree() {
   return new Promise((resolve, reject) => {
     setTimeout(function() {
       // resolve('RESOLVE THREE');
-      reject('REJECT THREE');
+      reject('Reject Three');
+    }, 1000);
+  });
+}
+function taskFour() {
+  return new Promise((resolve, reject) => {
+    setTimeout(function() {
+      resolve('Resolve Four');
     }, 1000);
   });
 }
@@ -84,31 +95,47 @@ function taskThree() {
 taskOne()
   .then(
     result => {
-      alert(`TASK ONE => ${result}`);
+      taskOneList.innerText = `Task One => ${result}`;
+      // alert(`TASK ONE => ${result}`);
       return taskTwo();
     },
     err => {
-      alert(`TASK ONE ERR => ${err}`);
+      taskOneList.innerText = `Task One Err => ${err}`;
+      // alert(`TASK ONE ERR => ${err}`);
       return taskTwo();
     }
   )
   .then(
     result => {
-      alert(`TASK TWO => ${result}`);
+      taskTwoList.innerText = `Task Two => ${result}`;
+      // alert(`TASK TWO => ${result}`);
       return taskThree();
     },
     err => {
-      alert(`TASK TWO => ${err}`);
+      taskTwoList.innerText = `Task Two Err => ${err}`;
+      // alert(`TASK TWO => ${err}`);
       return taskThree();
     }
   )
   .then(
     result => {
-      alert(`TASK THREE => ${result}`);
+      taskThreeList.innerText = `Task Three => ${result}`;
+      // alert(`TASK THREE => ${result}`);
+      return taskFour();
+    },
+    err => {
+      taskThreeList.innerText = `Task Three Err => ${err}`;
+      // alert(`TASK THREE ERR => ${err}`);
+      return taskFour();
+    }
+  )
+  .then(
+    result => {
+      taskFourList.innerText = `Task Four => ${result}`;
       return;
     },
     err => {
-      alert(`TASK THREE ERR => ${err}`);
+      taskFourList.innerText = `Task Four Err => ${err}`;
       return;
     }
   );
