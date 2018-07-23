@@ -6,15 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Promise Demo</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css' />
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-  <h2 class="first"></h2>
-  <br>
-  <h2 class="timer"></h2>
-  <br>
-  <h2 class="second"></h2>
+  <div class="container d-flex align-items-center justify-content-center" style="height: 100vh">
+    <div class="card text-dark bg-warning" style="width: 18rem;">
+      <img class="card-img-top" src="./images/doge.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Promise Demo</h5>
+        <p class="card-text">It shows first email and shows a reminder after 2s, continuously will appear second email.</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="first list-group-item list-group-item-danger"></li>
+        <li class="timer list-group-item list-group-item-danger"></li>
+        <li class="second list-group-item list-group-item-danger"></li>
+        <li class="second list-group-item list-group-item-primary">And I know, the color I used is a little ugly...</li>
+      </ul>
+    </div>
+  </div>
   <script src="./js/index.js"></script>
 </body>
 
