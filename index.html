@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%">
 
 <head>
   <meta charset="UTF-8">
@@ -10,37 +10,39 @@
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
-<body>
-  <div class="container d-flex align-items-center justify-content-center" style="height: 100vh">
-    <div class="card text-dark bg-warning mr-5" style="width: 18rem;">
-      <img class="card-img-top" src="./images/doge.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Promise Demo</h5>
-        <p class="card-text">It shows first email and shows a reminder after 2s, continuously will appear second email.</p>
+<body style="height: 100%">
+  <div class="container-fluid" style="height: 100%">
+    <div class="row justify-content-center align-items-center" style="height: 100%">
+      <div class="card col-md-4 text-dark bg-warning mr-5 shadow-lg p-3 mb-5 " style="width: 18rem;">
+        <img class="card-img-top" src="./images/doge.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Promise Demo</h5>
+          <p class="card-text">It shows first email and shows a reminder after 2s, continuously will appear second email.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="first list-group-item list-group-item-warning"></li>
+          <li class="timer list-group-item list-group-item-warning"></li>
+          <li class="second list-group-item list-group-item-warning"></li>
+        </ul>
       </div>
-      <ul class="list-group list-group-flush">
-        <li class="first list-group-item list-group-item-warning"></li>
-        <li class="timer list-group-item list-group-item-warning"></li>
-        <li class="second list-group-item list-group-item-warning"></li>
-      </ul>
-    </div>
-    <div>
-      <ul>
-        <li class="list-group-item list-group-item-primary">Task One Result</li>
-        <li class="list-group-item list-group-item-success taskOne"></li>
-      </ul>
-      <ul>
-        <li class="list-group-item list-group-item-primary">Task Two Result</li>
-        <li class="list-group-item list-group-item-success taskTwo"></li>
-      </ul>
-      <ul>
-        <li class="list-group-item list-group-item-primary">Task Three Result</li>
-        <li class="list-group-item list-group-item-danger taskThree"></li>
-      </ul>
-      <ul>
-        <li class="list-group-item list-group-item-primary">Task Four Result</li>
-        <li class="list-group-item list-group-item-success taskFour"></li>
-      </ul>
+      <div class="list-group col-md-4">
+        <ul>
+          <li class="list-group-item list-group-item-primary">Task One Result</li>
+          <li class="list-group-item list-group-item-success taskOne"></li>
+        </ul>
+        <ul>
+          <li class="list-group-item list-group-item-primary">Task Two Result</li>
+          <li class="list-group-item list-group-item-success taskTwo"></li>
+        </ul>
+        <ul>
+          <li class="list-group-item list-group-item-primary">Task Three Result</li>
+          <li class="list-group-item list-group-item-danger taskThree"></li>
+        </ul>
+        <ul>
+          <li class="list-group-item list-group-item-primary">Task Four Result</li>
+          <li class="list-group-item list-group-item-success taskFour"></li>
+        </ul>
+      </div>
     </div>
   </div>
   <script src="./js/index.js"></script>
