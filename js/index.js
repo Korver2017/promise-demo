@@ -12,18 +12,18 @@ function callApi() {
     if (true) {
       resolve(
         fetch('https://randomuser.me/api/', {})
-          .then(response => {
-            // console.log(response);
-            return response.json();
-          })
-          .then(jsonData => {
-            // console.log(jsonData);
-            // console.log(jsonData.results[0].email);
-            first.innerText = jsonData.results[0].email;
-          })
-          .catch(err => {
-            console.log('錯誤:', err);
-          })
+        .then(response => {
+          // console.log(response);
+          return response.json();
+        })
+        .then(jsonData => {
+          // console.log(jsonData);
+          // console.log(jsonData.results[0].email);
+          first.innerText = jsonData.results[0].email;
+        })
+        .catch(err => {
+          console.log('錯誤:', err);
+        })
       );
     } else {
       reject('Reject!');
@@ -64,30 +64,33 @@ callApi().then(
 
 function taskOne() {
   return new Promise((resolve, reject) => {
-    setTimeout(function() {
-      resolve('Resolve One');
+    setTimeout(() => {
+      resolve('Resolve');
     }, 1000);
   });
 }
+
 function taskTwo() {
   return new Promise((resolve, reject) => {
-    setTimeout(function() {
-      resolve('Resolve Two');
+    setTimeout(() => {
+      resolve('Resolve');
     }, 1000);
   });
 }
+
 function taskThree() {
   return new Promise((resolve, reject) => {
-    setTimeout(function() {
+    setTimeout(() => {
       // resolve('RESOLVE THREE');
-      reject('Reject Three');
+      reject('Reject');
     }, 1000);
   });
 }
+
 function taskFour() {
   return new Promise((resolve, reject) => {
-    setTimeout(function() {
-      resolve('Resolve Four');
+    setTimeout(function () {
+      resolve('Resolve');
     }, 1000);
   });
 }
@@ -95,47 +98,47 @@ function taskFour() {
 taskOne()
   .then(
     result => {
-      taskOneList.innerText = `Task One => ${result}`;
+      taskOneList.innerText = result;
       // alert(`TASK ONE => ${result}`);
       return taskTwo();
     },
     err => {
-      taskOneList.innerText = `Task One Err => ${err}`;
+      taskOneList.innerText = err;
       // alert(`TASK ONE ERR => ${err}`);
       return taskTwo();
     }
   )
   .then(
     result => {
-      taskTwoList.innerText = `Task Two => ${result}`;
+      taskTwoList.innerText = result;
       // alert(`TASK TWO => ${result}`);
       return taskThree();
     },
     err => {
-      taskTwoList.innerText = `Task Two Err => ${err}`;
+      taskTwoList.innerText = err;
       // alert(`TASK TWO => ${err}`);
       return taskThree();
     }
   )
   .then(
     result => {
-      taskThreeList.innerText = `Task Three => ${result}`;
+      taskThreeList.innerText = result;
       // alert(`TASK THREE => ${result}`);
       return taskFour();
     },
     err => {
-      taskThreeList.innerText = `Task Three Err => ${err}`;
+      taskThreeList.innerText = err;
       // alert(`TASK THREE ERR => ${err}`);
       return taskFour();
     }
   )
   .then(
     result => {
-      taskFourList.innerText = `Task Four => ${result}`;
+      taskFourList.innerText = result;
       return;
     },
     err => {
-      taskFourList.innerText = `Task Four Err => ${err}`;
+      taskFourList.innerText = err;
       return;
     }
   );
