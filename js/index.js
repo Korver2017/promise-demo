@@ -9,7 +9,9 @@ let taskFourList = document.querySelector('.taskFour');
 
 function callRandomUser() {
   return new Promise((resolve, reject) => {
-    if (true) {
+    let num = Math.floor(Math.random() * 2 + 1);
+    console.log(num);
+    if (num == 2) {
       let data = 'https://randomuser.me/api/';
       let xhr = new XMLHttpRequest();
       xhr.open('get', data, true);
