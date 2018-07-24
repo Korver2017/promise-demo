@@ -57,13 +57,20 @@ callRandomUser()
   .then(result => {
     console.log(result);
     second.innerText = result;
-    return;
+    return fetch('https://dog.ceo/api/breeds/image/random', {});
   }, err => {
     console.log(err);
     second.innerText = err;
-    return;
+    return fetch('https://dog.ceo/api/breeds/image/random', {});
+  })
+  .then(result => {
+    return result.json();
+  }).then((jsonData) => {
+    console.log(jsonData);
+    image.src = jsonData.message;
+  }).catch((err) => {
+    console.log(err);
   });
-
 
 // function callApi() {
 //   return new Promise((resolve, reject) => {
