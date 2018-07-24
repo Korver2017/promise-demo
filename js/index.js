@@ -1,66 +1,122 @@
 let first = document.querySelector('.first');
 let second = document.querySelector('.second');
-let timer = document.querySelector('.timer');
+let reminder = document.querySelector('.reminder');
 let image = document.querySelector('img');
 let taskOneList = document.querySelector('.taskOne');
 let taskTwoList = document.querySelector('.taskTwo');
 let taskThreeList = document.querySelector('.taskThree');
 let taskFourList = document.querySelector('.taskFour');
 
-function callApi() {
+function callRandomUser() {
   return new Promise((resolve, reject) => {
     if (true) {
-      resolve(
-        fetch('https://randomuser.me/api/', {})
-        .then(response => {
-          // console.log(response);
-          return response.json();
-        })
-        .then(jsonData => {
-          // console.log(jsonData);
-          // console.log(jsonData.results[0].email);
-          first.innerText = jsonData.results[0].email;
-        })
-        .catch(err => {
-          console.log('錯誤:', err);
-        })
-      );
+      let data = 'https://randomuser.me/api/';
+      let xhr = new XMLHttpRequest();
+      xhr.open('get', data, true);
+      xhr.send(null);
+      xhr.onload = () => {
+        let json = JSON.parse(xhr.responseText);
+        // console.log(json);
+        let email = json.results[0].email;
+        resolve(email);
+      };
     } else {
       reject('Reject!');
     }
   });
 }
-callApi().then(
-  setTimeout(() => {
-    timer.innerText = '2s Time Up!';
-    fetch('https://dog.ceo/api/breeds/image/random', {})
-      .then(response => {
-        // console.log(response);
-        return response.json();
-      })
-      .then(jsonData => {
-        // console.log(jsonData);
-        // console.log(jsonData.message);
-        image.src = jsonData.message;
-      })
-      .catch(err => {
-        console.log('錯誤:', err);
-      });
-    fetch('https://randomuser.me/api/', {})
-      .then(response => {
-        // console.log(response);
-        return response.json();
-      })
-      .then(jsonData => {
-        // console.log(jsonData);
-        // console.log(jsonData.results[0].email);
-        second.innerText = jsonData.results[0].email;
-      })
-      .catch(err => {
-        console.log('錯誤:', err);
-      });
-  }, 2000)
-);
+
+function delayFunc() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      reminder.innerText = '2s Time is Up!';
+      resolve('Resolve - DelayFunc')
+    }, 2000);
+  });
+}
+
+callRandomUser()
+  .then(result => {
+    console.log(result);
+    first.innerText = result;
+    return delayFunc();
+  }, err => {
+    console.log(err);
+    first.innerText = err;
+    return delayFunc();
+  })
+  .then(result => {
+    console.log(result);
+    return callRandomUser();
+  }, err => {
+    console.log(err);
+    return callRandomUser();
+  })
+  .then(result => {
+    console.log(result);
+    second.innerText = result;
+    return;
+  }, err => {
+    console.log(err);
+    second.innerText = err;
+    return;
+  });
+
+
+// function callApi() {
+//   return new Promise((resolve, reject) => {
+//     if (true) {
+//       resolve(
+//         fetch('https://randomuser.me/api/', {})
+//         .then(response => {
+//           // console.log(response);
+//           return response.json();
+//         })
+//         .then(jsonData => {
+//           // console.log(jsonData);
+//           // console.log(jsonData.results[0].email);
+//           first.innerText = jsonData.results[0].email;
+//         })
+//         .catch(err => {
+//           console.log('錯誤:', err);
+//         })
+//       );
+//     } else {
+//       reject('Reject!');
+//     }
+//   });
+// }
+// callApi().then(
+//   setTimeout(() => {
+//     timer.innerText = '2s Time Up!';
+//     fetch('https://dog.ceo/api/breeds/image/random', {})
+//       .then(response => {
+//         // console.log(response);
+//         return response.json();
+//       })
+//       .then(jsonData => {
+//         // console.log(jsonData);
+//         // console.log(jsonData.message);
+//         image.src = jsonData.message;
+//       })
+//       .catch(err => {
+//         console.log('錯誤:', err);
+//       });
+//     fetch('https://randomuser.me/api/', {})
+//       .then(response => {
+//         // console.log(response);
+//         return response.json();
+//       })
+//       .then(jsonData => {
+//         // console.log(jsonData);
+//         // console.log(jsonData.results[0].email);
+//         second.innerText = jsonData.results[0].email;
+//       })
+//       .catch(err => {
+//         console.log('錯誤:', err);
+//       });
+//   }, 2000)
+// );
 
 function taskOne() {
   return new Promise((resolve, reject) => {
@@ -103,7 +159,7 @@ taskOne()
       return taskTwo();
     },
     err => {
-      taskOneList.innerText = err;
+      taskOneList.innerText = `Task One Err => ${err}`;
       // alert(`TASK ONE ERR => ${err}`);
       return taskTwo();
     }
@@ -115,7 +171,7 @@ taskOne()
       return taskThree();
     },
     err => {
-      taskTwoList.innerText = err;
+      taskTwoList.innerText = `Task Two Err => ${err}`;
       // alert(`TASK TWO => ${err}`);
       return taskThree();
     }
@@ -138,7 +194,7 @@ taskOne()
       return;
     },
     err => {
-      taskFourList.innerText = err;
+      taskFourList.innerText = `Task Four Err => ${err}`;
       return;
     }
   );
